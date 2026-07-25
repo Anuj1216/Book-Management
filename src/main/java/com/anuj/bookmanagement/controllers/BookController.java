@@ -2,15 +2,18 @@ package com.anuj.bookmanagement.controllers;
 
 import com.anuj.bookmanagement.entities.Book;
 import com.anuj.bookmanagement.services.BookService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/books")
 public class BookController {
 
-    private BookService bookService;
+    private final BookService bookService;
 
     @GetMapping
     public List<Book> getBooks(){
