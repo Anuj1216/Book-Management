@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,5 +25,8 @@ public class Book {
     private String title;
     private String author;
     private String genre;
+
+    @ManyToMany(mappedBy = "userBooks")
+    private List<User> users;
 
 }

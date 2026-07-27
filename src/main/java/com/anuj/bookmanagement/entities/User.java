@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +23,8 @@ public class User {
     private String email;
     private String password;
     private String address;
+
+    @ManyToMany
+    @JoinTable(name = "book-id")
+    private List<Book> userBooks;
 }
