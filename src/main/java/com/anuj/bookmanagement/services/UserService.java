@@ -2,9 +2,11 @@ package com.anuj.bookmanagement.services;
 
 import com.anuj.bookmanagement.entities.User;
 import com.anuj.bookmanagement.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
@@ -25,7 +27,13 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-        return userRepository.save(user);
+        User oldUser = getUserById(user.getId());
+        oldUser.setName(user.getName());
+        oldUser.setEmail(user.getEmail());
+        oldUser.setPassword(user.getPassword());
+        oldUser.setAddress(user.getAddress());
+        return userRepository.save(oldUser);
+
     }
 
     public void deleteUser(User user) {
